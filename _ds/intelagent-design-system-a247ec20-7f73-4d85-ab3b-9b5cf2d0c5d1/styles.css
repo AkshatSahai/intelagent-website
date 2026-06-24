@@ -1,0 +1,8 @@
+/* =============================================
+   INTELAGENT — Global Styles Entry Point
+   Import order matters: tokens first, then base.
+   ============================================= */
+
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';

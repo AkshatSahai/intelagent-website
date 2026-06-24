@@ -1,0 +1,84 @@
+/* =============================================
+   INTELAGENT — Color Tokens
+   ============================================= */
+
+:root {
+  /* ── Brand Primitives ── */
+  --orange-50:  #FEF2E0;   /* tints derived from exact logo color */
+  --orange-100: #FDD7A5;
+  --orange-200: #F9B56A;
+  --orange-300: #F2903B;
+  --orange-400: #E87A1F;
+  --orange-500: #D96600;   /* Intelagent Orange — exact logo color rgb(217,102,0) */
+  --orange-600: #B85700;
+  --orange-700: #954600;   /* Deep Ember — hover / depth */
+  --orange-800: #713400;
+  --orange-900: #4D2300;
+
+  --charcoal-50:  #F5F3F1;
+  --charcoal-100: #EAE6E3;
+  --charcoal-200: #D5CEC9;
+  --charcoal-300: #BAB0A9;
+  --charcoal-400: #998D85;
+  --charcoal-500: #7A6D66;
+  --charcoal-600: #605450;
+  --charcoal-700: #4A4440;
+  --charcoal-800: #3A3330;
+  --charcoal-900: #2B2724;  /* Warm Charcoal — primary text */
+
+  --cream-50:  #FFFFFF;
+  --cream-100: #FBF7F2;     /* Warm Cream — primary background */
+  --cream-200: #F4EFE8;
+  --cream-300: #EDE5DA;
+  --cream-400: #E8E1D8;     /* Warm Light Grey — dividers / cards */
+  --cream-500: #DDD4C8;
+  --cream-600: #C4BAB0;
+  --cream-700: #A8A098;
+
+  /* ── Semantic — Text ── */
+  --text-primary:   var(--charcoal-900);
+  --text-secondary: var(--charcoal-700);
+  --text-muted:     var(--charcoal-500);
+  --text-disabled:  var(--charcoal-400);
+  --text-inverse:   #FFFFFF;
+  --text-accent:    var(--orange-500);
+  --text-accent-deep: var(--orange-700);
+
+  /* ── Semantic — Backgrounds ── */
+  --bg-base:          var(--cream-100);
+  --bg-surface:       #FFFFFF;
+  --bg-surface-warm:  var(--cream-200);
+  --bg-subtle:        var(--cream-300);
+  --bg-accent:        var(--orange-500);
+  --bg-accent-hover:  var(--orange-700);
+  --bg-accent-muted:  var(--orange-50);
+  --bg-inverse:       var(--charcoal-900);
+
+  /* ── Semantic — Borders ── */
+  --border-subtle:   var(--cream-400);
+  --border-default:  var(--cream-600);
+  --border-strong:   var(--charcoal-300);
+  --border-accent:   var(--orange-500);
+  --border-inverse:  rgba(255, 255, 255, 0.2);
+
+  /* ── Semantic — Status ── */
+  --status-success-bg:   #EAF5EE;
+  --status-success-text: #1E6B3B;
+  --status-success-border: #A3D4B4;
+
+  --status-warning-bg:   #FEF3E8;
+  --status-warning-text: #94500A;
+  --status-warning-border: #F5C688;
+
+  --status-error-bg:   #FDECEA;
+  --status-error-text: #B32B1A;
+  --status-error-border: #F0A69E;
+
+  --status-info-bg:   #E8EFF9;
+  --status-info-text: #1E4A8A;
+  --status-info-border: #9DB8E4;
+
+  --status-neutral-bg:   var(--cream-200);
+  --status-neutral-text: var(--charcoal-700);
+  --status-neutral-border: var(--cream-500);
+}
