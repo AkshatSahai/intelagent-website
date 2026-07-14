@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>Intelagent — Done-for-you AI for small business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap">
+<script src="./support.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -21,8 +25,12 @@
     [data-hero-grid] { grid-template-columns: 1fr !important; }
     [data-hero-img] { display: none !important; }
     [data-nav-links] { display: none !important; }
+    [data-nav-burger] { display: inline-flex !important; }
     [data-form-grid], [data-time-grid] { grid-template-columns: 1fr !important; }
     [data-footer] { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; }
+  }
+  @media (min-width: 901px) {
+    [data-nav-mobile] { display: none !important; }
   }
   @media (max-width: 600px) {
     [data-sec] { padding-left: 20px !important; padding-right: 20px !important; }
@@ -44,7 +52,18 @@
         <a href="#why" style="font-size:15px; font-weight:500; color:var(--charcoal-700); text-decoration:none;" style-hover="color:var(--orange-700)">Why Intelagent</a>
         <a href="#faq" style="font-size:15px; font-weight:500; color:var(--charcoal-700); text-decoration:none;" style-hover="color:var(--orange-700)">FAQ</a>
       </div>
-      <x-import component-from-global-scope="IntelagentDesignSystem_a247ec.Button" size="md" onClick="{{ goContact }}" hint-size="auto,40px">Book a free call</x-import>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <x-import component-from-global-scope="IntelagentDesignSystem_a247ec.Button" size="md" onClick="{{ goContact }}" hint-size="auto,40px">Book a free call</x-import>
+        <button data-nav-burger="true" aria-expanded="false" aria-label="Menu" onClick="{{ navToggle }}" style="display:none; align-items:center; justify-content:center; width:40px; height:40px; background:none; border:none; border-radius:8px; cursor:pointer; color:var(--charcoal-800);">
+          <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div data-nav-mobile="true" onClick="{{ navMenuClick }}" style="display:none; flex-direction:column; padding:4px 20px 14px; border-top:1px solid var(--cream-400);">
+      <a href="#how-it-works" style="padding:12px 4px; font-size:16px; font-weight:500; color:var(--charcoal-800); text-decoration:none;">How it works</a>
+      <a href="#what-we-handle" style="padding:12px 4px; font-size:16px; font-weight:500; color:var(--charcoal-800); text-decoration:none;">What we handle</a>
+      <a href="#why" style="padding:12px 4px; font-size:16px; font-weight:500; color:var(--charcoal-800); text-decoration:none;">Why Intelagent</a>
+      <a href="#faq" style="padding:12px 4px; font-size:16px; font-weight:500; color:var(--charcoal-800); text-decoration:none;">FAQ</a>
     </div>
   </nav>
 
@@ -66,7 +85,7 @@
           <x-import component-from-global-scope="IntelagentDesignSystem_a247ec.Button" size="lg" onClick="{{ goContact }}" hint-size="auto,48px">Let's look at your workflow</x-import>
           <a href="#how-it-works" style="display:inline-flex; align-items:center; gap:7px; font-size:15px; font-weight:600; color:var(--charcoal-700); text-decoration:none; padding:8px 4px;" style-hover="color:var(--orange-700)">
             See how it works
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
           </a>
         </div>
         <p style="margin:30px 0 0; font-size:13px; color:var(--charcoal-400);">We study how you work first. No templates, no pressure.</p>
@@ -84,23 +103,23 @@
       </div>
       <div data-reveal="true" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:16px; margin-top:44px;">
         <div data-reveal-item="true" style="background:var(--cream-100); border:1px solid var(--cream-400); border-radius:16px; padding:24px;">
-          <span style="display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <span style="display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:14px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
           <p style="margin:0; font-size:15px; font-weight:500; line-height:1.5; color:var(--charcoal-800);">Leads go cold while you're on the job</p>
         </div>
         <div data-reveal-item="true" style="background:var(--cream-100); border:1px solid var(--cream-400); border-radius:16px; padding:24px;">
-          <span style="display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
+          <span style="display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:14px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
           <p style="margin:0; font-size:15px; font-weight:500; line-height:1.5; color:var(--charcoal-800);">Invoices sent late, or not at all</p>
         </div>
         <div data-reveal-item="true" style="background:var(--cream-100); border:1px solid var(--cream-400); border-radius:16px; padding:24px;">
-          <span style="display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg></span>
+          <span style="display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:14px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg></span>
           <p style="margin:0; font-size:15px; font-weight:500; line-height:1.5; color:var(--charcoal-800);">Bookings living in your head</p>
         </div>
         <div data-reveal-item="true" style="background:var(--cream-100); border:1px solid var(--cream-400); border-radius:16px; padding:24px;">
-          <span style="display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span>
+          <span style="display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:14px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span>
           <p style="margin:0; font-size:15px; font-weight:500; line-height:1.5; color:var(--charcoal-800);">Follow-ups that quietly never happen</p>
         </div>
         <div data-reveal-item="true" style="background:var(--cream-100); border:1px solid var(--cream-400); border-radius:16px; padding:24px;">
-          <span style="display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <span style="display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:14px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
           <p style="margin:0; font-size:15px; font-weight:500; line-height:1.5; color:var(--charcoal-800);">DIY tools you never had time to finish</p>
         </div>
       </div>
@@ -146,27 +165,27 @@
       </div>
       <div data-reveal="true" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;">
         <div data-reveal-item="true" style="background:#fff; border-top:3px solid var(--orange-500); border-radius:16px; padding:28px; box-shadow:var(--shadow-sm);">
-          <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:16px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
+          <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:16px;"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:19px; color:var(--charcoal-900); margin:0 0 8px;">Lead handling and follow-up</h3>
           <p style="margin:0; font-size:15px; line-height:1.6; color:var(--charcoal-600);">Capture every enquiry and respond before it goes cold, even when you're on a job.</p>
         </div>
         <div data-reveal-item="true" style="background:#fff; border-top:3px solid var(--orange-500); border-radius:16px; padding:28px; box-shadow:var(--shadow-sm);">
-          <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:16px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="m9 16 2 2 4-4"/></svg></span>
+          <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:16px;"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="m9 16 2 2 4-4"/></svg></span>
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:19px; color:var(--charcoal-900); margin:0 0 8px;">Booking and scheduling</h3>
           <p style="margin:0; font-size:15px; line-height:1.6; color:var(--charcoal-600);">Confirmations, reminders, and rescheduling handled automatically.</p>
         </div>
         <div data-reveal-item="true" style="background:#fff; border-top:3px solid var(--orange-500); border-radius:16px; padding:28px; box-shadow:var(--shadow-sm);">
-          <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:16px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span>
+          <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:16px;"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span>
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:19px; color:var(--charcoal-900); margin:0 0 8px;">Invoicing and payments</h3>
           <p style="margin:0; font-size:15px; line-height:1.6; color:var(--charcoal-600);">Invoices go out on time, every time. Payment reminders too.</p>
         </div>
         <div data-reveal-item="true" style="background:#fff; border-top:3px solid var(--orange-500); border-radius:16px; padding:28px; box-shadow:var(--shadow-sm);">
-          <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:16px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+          <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:16px;"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:19px; color:var(--charcoal-900); margin:0 0 8px;">Email nurturing</h3>
           <p style="margin:0; font-size:15px; line-height:1.6; color:var(--charcoal-600);">Stay in touch with leads and past clients without writing a single email yourself.</p>
         </div>
         <div data-reveal-item="true" style="background:#fff; border-top:3px solid var(--orange-500); border-radius:16px; padding:28px; box-shadow:var(--shadow-sm);">
-          <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:16px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span>
+          <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:var(--orange-50); color:var(--orange-500); margin-bottom:16px;"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span>
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:19px; color:var(--charcoal-900); margin:0 0 8px;">Finance and admin</h3>
           <p style="margin:0; font-size:15px; line-height:1.6; color:var(--charcoal-600);">The background tasks that eat your evenings, handled quietly.</p>
         </div>
@@ -182,28 +201,28 @@
     </div>
     <div data-reveal="true" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:36px 40px;">
       <div data-reveal-item="true" style="display:flex; gap:18px;">
-        <span style="flex:none; display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <span style="flex:none; display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500);"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>
         <div>
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:20px; color:var(--charcoal-900); margin:2px 0 8px;">Done for you</h3>
           <p style="margin:0; font-size:15px; line-height:1.6; color:var(--charcoal-600);">You never set up, learn, or manage a tool. We handle everything.</p>
         </div>
       </div>
       <div data-reveal-item="true" style="display:flex; gap:18px;">
-        <span style="flex:none; display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></span>
+        <span style="flex:none; display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500);"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></span>
         <div>
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:20px; color:var(--charcoal-900); margin:2px 0 8px;">Built around your workflow</h3>
           <p style="margin:0; font-size:15px; line-height:1.6; color:var(--charcoal-600);">We study how your business actually runs before we build anything, then layer on top of your existing tools rather than replacing them.</p>
         </div>
       </div>
       <div data-reveal-item="true" style="display:flex; gap:18px;">
-        <span style="flex:none; display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <span style="flex:none; display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500);"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <div>
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:20px; color:var(--charcoal-900); margin:2px 0 8px;">You stay in control</h3>
           <p style="margin:0; font-size:15px; line-height:1.6; color:var(--charcoal-600);">Nothing important runs without your approval. You're always the decision-maker.</p>
         </div>
       </div>
       <div data-reveal-item="true" style="display:flex; gap:18px;">
-        <span style="flex:none; display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
+        <span style="flex:none; display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500);"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
         <div>
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:20px; color:var(--charcoal-900); margin:2px 0 8px;">Your personal touch survives</h3>
           <p style="margin:0; font-size:15px; line-height:1.6; color:var(--charcoal-600);">Agents handle back-office work quietly. Your customers still feel like they're dealing with you.</p>
@@ -249,12 +268,12 @@
     </div>
     <div data-reveal="true" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px;">
       <div data-reveal-item="true" style="background:#fff; border:1px solid var(--cream-400); border-radius:18px; padding:32px; box-shadow:var(--shadow-sm);">
-        <span style="display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500); margin-bottom:18px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span>
+        <span style="display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500); margin-bottom:18px;"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span>
         <h3 style="font-family:var(--font-display); font-weight:700; font-size:21px; color:var(--charcoal-900); margin:0 0 10px;">The local owner</h3>
         <p style="margin:0; font-size:16px; line-height:1.6; color:var(--charcoal-600);">Tradesperson, therapist, photographer, consultant. You do great work. The admin is what's dragging you down.</p>
       </div>
       <div data-reveal-item="true" style="background:#fff; border:1px solid var(--cream-400); border-radius:18px; padding:32px; box-shadow:var(--shadow-sm);">
-        <span style="display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500); margin-bottom:18px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/></svg></span>
+        <span style="display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:14px; background:var(--orange-50); color:var(--orange-500); margin-bottom:18px;"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/></svg></span>
         <h3 style="font-family:var(--font-display); font-weight:700; font-size:21px; color:var(--charcoal-900); margin:0 0 10px;">The growing SMB</h3>
         <p style="margin:0; font-size:16px; line-height:1.6; color:var(--charcoal-600);">You've got a small team but operations still run through you. It's time to change that without disrupting what's working.</p>
       </div>
@@ -271,37 +290,37 @@
       </div>
       <div data-reveal="true" style="display:flex; flex-direction:column; gap:12px;">
         <div data-reveal-item="true" style="background:var(--cream-100); border:1px solid var(--cream-400); border-radius:14px; overflow:hidden;">
-          <button data-faq="0" onClick="{{ faqToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:22px 24px; font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--charcoal-900);">
+          <button data-faq="0" aria-expanded="false" onClick="{{ faqToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:22px 24px; font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--charcoal-900);">
             Will it sound robotic to my customers?
-            <span data-faq-chev="true" style="flex:none; display:inline-flex; color:var(--orange-500); transition:transform 0.3s ease;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            <span data-faq-chev="true" style="flex:none; display:inline-flex; color:var(--orange-500); transition:transform 0.3s ease;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div data-faq-ans="0" data-open="0" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease;"><p style="margin:0; padding:0 24px 24px; font-size:15px; line-height:1.65; color:var(--charcoal-600);">No. We write and configure everything to match your voice and your existing communication style. Your customers won't notice a difference, except that you respond faster.</p></div>
         </div>
         <div data-reveal-item="true" style="background:var(--cream-100); border:1px solid var(--cream-400); border-radius:14px; overflow:hidden;">
-          <button data-faq="1" onClick="{{ faqToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:22px 24px; font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--charcoal-900);">
+          <button data-faq="1" aria-expanded="false" onClick="{{ faqToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:22px 24px; font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--charcoal-900);">
             Do I need to be technical?
-            <span data-faq-chev="true" style="flex:none; display:inline-flex; color:var(--orange-500); transition:transform 0.3s ease;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            <span data-faq-chev="true" style="flex:none; display:inline-flex; color:var(--orange-500); transition:transform 0.3s ease;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div data-faq-ans="1" data-open="0" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease;"><p style="margin:0; padding:0 24px 24px; font-size:15px; line-height:1.65; color:var(--charcoal-600);">Not at all. That's the whole point. You won't log into a dashboard, learn a tool, or manage a workflow. We do that.</p></div>
         </div>
         <div data-reveal-item="true" style="background:var(--cream-100); border:1px solid var(--cream-400); border-radius:14px; overflow:hidden;">
-          <button data-faq="2" onClick="{{ faqToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:22px 24px; font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--charcoal-900);">
+          <button data-faq="2" aria-expanded="false" onClick="{{ faqToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:22px 24px; font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--charcoal-900);">
             What does it cost?
-            <span data-faq-chev="true" style="flex:none; display:inline-flex; color:var(--orange-500); transition:transform 0.3s ease;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            <span data-faq-chev="true" style="flex:none; display:inline-flex; color:var(--orange-500); transition:transform 0.3s ease;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div data-faq-ans="2" data-open="0" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease;"><p style="margin:0; padding:0 24px 24px; font-size:15px; line-height:1.65; color:var(--charcoal-600);">Pricing is based on what your business needs and what we build. We discuss that on the discovery call, once we understand your situation. There's no package to pick blind.</p></div>
         </div>
         <div data-reveal-item="true" style="background:var(--cream-100); border:1px solid var(--cream-400); border-radius:14px; overflow:hidden;">
-          <button data-faq="3" onClick="{{ faqToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:22px 24px; font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--charcoal-900);">
+          <button data-faq="3" aria-expanded="false" onClick="{{ faqToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:22px 24px; font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--charcoal-900);">
             What happens after it's set up?
-            <span data-faq-chev="true" style="flex:none; display:inline-flex; color:var(--orange-500); transition:transform 0.3s ease;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            <span data-faq-chev="true" style="flex:none; display:inline-flex; color:var(--orange-500); transition:transform 0.3s ease;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div data-faq-ans="3" data-open="0" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease;"><p style="margin:0; padding:0 24px 24px; font-size:15px; line-height:1.65; color:var(--charcoal-600);">We monitor and maintain it. If something needs adjusting as your business changes, we handle that too.</p></div>
         </div>
         <div data-reveal-item="true" style="background:var(--cream-100); border:1px solid var(--cream-400); border-radius:14px; overflow:hidden;">
-          <button data-faq="4" onClick="{{ faqToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:22px 24px; font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--charcoal-900);">
+          <button data-faq="4" aria-expanded="false" onClick="{{ faqToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; text-align:left; padding:22px 24px; font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--charcoal-900);">
             What if I already use tools like Jobber, Xero, or Google Calendar?
-            <span data-faq-chev="true" style="flex:none; display:inline-flex; color:var(--orange-500); transition:transform 0.3s ease;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            <span data-faq-chev="true" style="flex:none; display:inline-flex; color:var(--orange-500); transition:transform 0.3s ease;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div data-faq-ans="4" data-open="0" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease;"><p style="margin:0; padding:0 24px 24px; font-size:15px; line-height:1.65; color:var(--charcoal-600);">Great. We work with the tools you already use. We don't ask you to switch anything.</p></div>
         </div>
@@ -360,20 +379,20 @@
         </div>
       </fieldset>
       <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}">
-      <p style="margin:24px 0 0; padding:10px 14px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:8px;">{{ error }}</p>
+      <p role="alert" style="margin:24px 0 0; padding:10px 14px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:8px;">{{ error }}</p>
       </sc-if>
       <div style="margin-top:24px;">
         <x-import component-from-global-scope="IntelagentDesignSystem_a247ec.Button" size="lg" type="submit" full-width="{{ true }}" hint-size="100%,48px">Start the conversation</x-import>
       </div>
       <sc-if value="{{ submitError }}" hint-placeholder-val="{{ false }}">
-      <p style="text-align:center; margin:14px 0 0; font-size:13px; color:#B42318;">Something went wrong sending your message. Please try again, or email us directly.</p>
+      <p role="alert" style="text-align:center; margin:14px 0 0; font-size:13px; color:#B42318;">Something went wrong sending your message. Please try again, or email us directly.</p>
       </sc-if>
       <p style="text-align:center; margin:18px 0 0; font-size:13px; color:var(--charcoal-400);">We'll get back to you within one business day.</p>
     </form>
     </sc-if>
     <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
     <div style="background:#fff; border:1px solid var(--cream-400); border-radius:20px; padding:48px 36px; box-shadow:var(--shadow-md); text-align:center;">
-      <span style="display:inline-flex; width:60px; height:60px; align-items:center; justify-content:center; border-radius:50%; background:var(--orange-50); color:var(--orange-500); margin-bottom:20px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>
+      <span style="display:inline-flex; width:60px; height:60px; align-items:center; justify-content:center; border-radius:50%; background:var(--orange-50); color:var(--orange-500); margin-bottom:20px;"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>
       <h3 style="font-family:var(--font-display); font-weight:800; font-size:26px; color:var(--charcoal-900); margin:0 0 12px;">Thanks. We've got it.</h3>
       <p style="margin:0 auto; max-width:420px; font-size:16px; line-height:1.6; color:var(--charcoal-600);">We'll take a look at what you've shared and get back to you within one business day. No pitch, just a conversation.</p>
     </div>
@@ -393,10 +412,6 @@
           <a href="#how-it-works" style="font-size:14px; color:var(--charcoal-300); text-decoration:none;" style-hover="color:var(--orange-300)">How it works</a>
           <a href="#what-we-handle" style="font-size:14px; color:var(--charcoal-300); text-decoration:none;" style-hover="color:var(--orange-300)">What we handle</a>
           <a href="#faq" style="font-size:14px; color:var(--charcoal-300); text-decoration:none;" style-hover="color:var(--orange-300)">FAQ</a>
-        </div>
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <a href="#" style="font-size:14px; color:var(--charcoal-300); text-decoration:none;" style-hover="color:var(--orange-300)">Privacy Policy</a>
-          <a href="#" style="font-size:14px; color:var(--charcoal-300); text-decoration:none;" style-hover="color:var(--orange-300)">Terms</a>
         </div>
       </div>
     </div>
@@ -436,6 +451,21 @@ class Component extends DCLogic {
       error: this.state.error,
       showTestimonials: this.props.showTestimonials ?? true,
       goContact: () => { window.location.hash = '#contact'; },
+      navToggle: () => {
+        const menu = document.querySelector('[data-nav-mobile]');
+        const burger = document.querySelector('[data-nav-burger]');
+        if (!menu || !burger) return;
+        const open = menu.style.display === 'flex';
+        menu.style.display = open ? 'none' : 'flex';
+        burger.setAttribute('aria-expanded', open ? 'false' : 'true');
+      },
+      navMenuClick: (e) => {
+        if (!e.target.closest('a')) return;
+        const menu = document.querySelector('[data-nav-mobile]');
+        const burger = document.querySelector('[data-nav-burger]');
+        if (menu) menu.style.display = 'none';
+        if (burger) burger.setAttribute('aria-expanded', 'false');
+      },
       onSubmit: async (e) => {
         e.preventDefault();
         const form = e.currentTarget;
@@ -494,9 +524,11 @@ class Component extends DCLogic {
         const isOpen = ans.getAttribute('data-open') === '1';
         document.querySelectorAll('[data-faq-ans]').forEach((a) => { a.style.maxHeight = '0px'; a.setAttribute('data-open', '0'); });
         document.querySelectorAll('[data-faq-chev]').forEach((c) => { c.style.transform = 'rotate(0deg)'; });
+        document.querySelectorAll('[data-faq]').forEach((b) => { b.setAttribute('aria-expanded', 'false'); });
         if (!isOpen) {
           ans.style.maxHeight = ans.scrollHeight + 'px';
           ans.setAttribute('data-open', '1');
+          btn.setAttribute('aria-expanded', 'true');
           if (chev) chev.style.transform = 'rotate(180deg)';
         }
       },

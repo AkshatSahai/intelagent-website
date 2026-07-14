@@ -1,8 +1,5 @@
 /* =============================================
    INTELAGENT — Global Styles Entry Point
-   Import order matters: tokens first, then base.
+   Token files are linked directly from index.html <head> (parallel
+   requests, no @import chain) — link tokens/*.css before this file.
    ============================================= */
-
-@import './tokens/colors.css';
-@import './tokens/typography.css';
-@import './tokens/spacing.css';

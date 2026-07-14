@@ -2,9 +2,9 @@
    INTELAGENT — Typography Tokens
    ============================================= */
 
-/* Webfont imports — Google Fonts */
-/* NOTE: Fira Code loaded from Google Fonts as a stand-in until the licensed file is uploaded via the sidebar. */
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap');
+/* Webfonts (Hanken Grotesk + Inter) are loaded via <link> tags in index.html <head>
+   with preconnect — faster than a CSS @import chain. Fira Code was dropped:
+   --font-mono falls back to system monospace fonts until a licensed file exists. */
 
 :root {
   /* ── Font Families ── */
