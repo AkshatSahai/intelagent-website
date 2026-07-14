@@ -357,6 +357,9 @@
       <div style="margin-top:24px;">
         <x-import component-from-global-scope="IntelagentDesignSystem_a247ec.Button" size="lg" type="submit" full-width="{{ true }}" hint-size="100%,48px">Start the conversation</x-import>
       </div>
+      <sc-if value="{{ submitError }}" hint-placeholder-val="{{ false }}">
+      <p style="text-align:center; margin:14px 0 0; font-size:13px; color:#B42318;">Something went wrong sending your message. Please try again, or email us directly.</p>
+      </sc-if>
       <p style="text-align:center; margin:18px 0 0; font-size:13px; color:var(--charcoal-400);">We'll get back to you within one business day.</p>
     </form>
     </sc-if>
@@ -409,18 +412,49 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;showTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { submitted: false };
+  // === Lead form wiring ===
+  // Submissions POST as JSON to this N8N webhook, which writes the lead into the Airtable CRM.
+  // If this page is ever regenerated from scratch, re-apply LEAD_WEBHOOK_URL + the onSubmit fetch below.
+  // To point at a different N8N workflow, change this one URL (use the PRODUCTION webhook URL).
+  LEAD_WEBHOOK_URL = 'https://intelagent.app.n8n.cloud/webhook/a5dc1da7-e3b2-4d8c-9fe5-8177f28efa1e';
+
+  state = { submitted: false, submitError: false, submitting: false };
 
   renderVals() {
     return {
       submitted: this.state.submitted,
       notSubmitted: !this.state.submitted,
+      submitError: this.state.submitError,
       showTestimonials: this.props.showTestimonials ?? true,
       goContact: () => { window.location.hash = '#contact'; },
-      onSubmit: (e) => {
+      onSubmit: async (e) => {
         e.preventDefault();
-        this.setState({ submitted: true });
-        window.location.hash = '#contact';
+        const form = e.currentTarget;
+        const fd = new FormData(form);
+        const payload = {
+          name: fd.get('name'),
+          business: fd.get('business'),
+          teamSize: fd.get('teamSize'),
+          email: fd.get('email'),
+          phone: fd.get('phone'),
+          timeGoes: fd.getAll('timeGoes'), // multi-select checkboxes -> array
+          message: fd.get('message'),
+          submittedAt: new Date().toISOString(),
+        };
+        this.setState({ submitting: true, submitError: false });
+        try {
+          const res = await fetch(this.LEAD_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          if (!res.ok) throw new Error('Bad status ' + res.status);
+          this.setState({ submitted: true, submitting: false });
+          window.location.hash = '#contact';
+        } catch (err) {
+          console.error('Lead submit failed', err);
+          this.setState({ submitError: true, submitting: false });
+        }
       },
       faqToggle: (e) => {
         const btn = e.currentTarget;
