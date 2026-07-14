@@ -324,13 +324,22 @@
         <label style="display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:600; color:var(--charcoal-800);">Business type
           <input type="text" name="business" required placeholder="e.g. electrician, clinic, studio" style="height:46px; padding:0 14px; font-family:var(--font-body); font-size:15px; color:var(--charcoal-900); background:#fff; border:1.5px solid var(--cream-600); border-radius:8px; outline:none; box-sizing:border-box;" style-focus="border-color:var(--orange-500); outline:3px solid rgba(217,102,0,0.18)">
         </label>
-        <label style="grid-column:1 / -1; display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:600; color:var(--charcoal-800);">How big is your team?
+        <label style="display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:600; color:var(--charcoal-800);">How big is your team?
           <select name="teamSize" required style="height:46px; padding:0 40px 0 14px; font-family:var(--font-body); font-size:15px; color:var(--charcoal-900); background-color:#fff; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23A8480A%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m6 9 6 6 6-6%22/></svg>'); background-repeat:no-repeat; background-position:right 13px center; border:1.5px solid var(--cream-600); border-radius:8px; outline:none; box-sizing:border-box; cursor:pointer; appearance:none; -webkit-appearance:none;" style-focus="border-color:var(--orange-500); outline:3px solid rgba(217,102,0,0.18)">
             <option value="" disabled selected>Select one</option>
             <option value="Just me">Just me</option>
             <option value="2-10">2-10</option>
             <option value="11-50">11-50</option>
             <option value="More than 50">More than 50</option>
+          </select>
+        </label>
+        <label style="display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:600; color:var(--charcoal-800);">Monthly Revenue
+          <select name="revenue" required style="height:46px; padding:0 40px 0 14px; font-family:var(--font-body); font-size:15px; color:var(--charcoal-900); background-color:#fff; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23A8480A%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m6 9 6 6 6-6%22/></svg>'); background-repeat:no-repeat; background-position:right 13px center; border:1.5px solid var(--cream-600); border-radius:8px; outline:none; box-sizing:border-box; cursor:pointer; appearance:none; -webkit-appearance:none;" style-focus="border-color:var(--orange-500); outline:3px solid rgba(217,102,0,0.18)">
+            <option value="" disabled selected>Select one</option>
+            <option value="$0 - $5,000">$0 - $5,000</option>
+            <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+            <option value="$10,000 - $25,000">$10,000 - $25,000</option>
+            <option value="$25,000+">$25,000+</option>
           </select>
         </label>
         <label style="display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:600; color:var(--charcoal-800);">Email
@@ -343,17 +352,13 @@
       <fieldset style="border:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:12px;">
         <legend style="padding:0; font-size:13px; font-weight:600; color:var(--charcoal-800);">Where does the time go? Tick whatever fits.</legend>
         <div data-time-grid="true" style="display:grid; grid-template-columns:1fr 1fr; gap:10px 18px;">
-          <label style="display:flex; align-items:center; gap:10px; font-size:15px; color:var(--charcoal-700); cursor:pointer;"><input type="checkbox" name="timeGoes" value="Chasing and following up on leads" style="width:18px; height:18px; accent-color:var(--orange-500); cursor:pointer;">Chasing and following up on leads</label>
-          <label style="display:flex; align-items:center; gap:10px; font-size:15px; color:var(--charcoal-700); cursor:pointer;"><input type="checkbox" name="timeGoes" value="Booking and scheduling" style="width:18px; height:18px; accent-color:var(--orange-500); cursor:pointer;">Booking and scheduling</label>
-          <label style="display:flex; align-items:center; gap:10px; font-size:15px; color:var(--charcoal-700); cursor:pointer;"><input type="checkbox" name="timeGoes" value="Invoicing and payments" style="width:18px; height:18px; accent-color:var(--orange-500); cursor:pointer;">Invoicing and payments</label>
-          <label style="display:flex; align-items:center; gap:10px; font-size:15px; color:var(--charcoal-700); cursor:pointer;"><input type="checkbox" name="timeGoes" value="Staying in touch with past clients" style="width:18px; height:18px; accent-color:var(--orange-500); cursor:pointer;">Staying in touch with past clients</label>
-          <label style="display:flex; align-items:center; gap:10px; font-size:15px; color:var(--charcoal-700); cursor:pointer;"><input type="checkbox" name="timeGoes" value="Finance and admin" style="width:18px; height:18px; accent-color:var(--orange-500); cursor:pointer;">Finance and admin</label>
+          <label style="display:flex; align-items:center; gap:10px; font-size:15px; color:var(--charcoal-700); cursor:pointer;"><input type="checkbox" name="timeGoes" value="Lead follow up" style="width:18px; height:18px; accent-color:var(--orange-500); cursor:pointer;">Lead follow up</label>
+          <label style="display:flex; align-items:center; gap:10px; font-size:15px; color:var(--charcoal-700); cursor:pointer;"><input type="checkbox" name="timeGoes" value="Booking &amp; scheduling" style="width:18px; height:18px; accent-color:var(--orange-500); cursor:pointer;">Booking &amp; scheduling</label>
+          <label style="display:flex; align-items:center; gap:10px; font-size:15px; color:var(--charcoal-700); cursor:pointer;"><input type="checkbox" name="timeGoes" value="Finance &amp; admin" style="width:18px; height:18px; accent-color:var(--orange-500); cursor:pointer;">Finance &amp; admin</label>
+          <label style="display:flex; align-items:center; gap:10px; font-size:15px; color:var(--charcoal-700); cursor:pointer;"><input type="checkbox" name="timeGoes" value="Client retention/feedback" style="width:18px; height:18px; accent-color:var(--orange-500); cursor:pointer;">Client retention/feedback</label>
           <label style="display:flex; align-items:center; gap:10px; font-size:15px; color:var(--charcoal-700); cursor:pointer;"><input type="checkbox" name="timeGoes" value="Honestly, all of it" style="width:18px; height:18px; accent-color:var(--orange-500); cursor:pointer;">Honestly, all of it</label>
         </div>
       </fieldset>
-      <label style="display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:600; color:var(--charcoal-800); margin-top:18px;">What's the biggest thing eating your time right now?
-        <textarea name="message" rows="4" required placeholder="Tell us where the day gets stuck." style="padding:12px 14px; font-family:var(--font-body); font-size:15px; line-height:1.55; color:var(--charcoal-900); background:#fff; border:1.5px solid var(--cream-600); border-radius:8px; outline:none; resize:vertical; box-sizing:border-box;" style-focus="border-color:var(--orange-500); outline:3px solid rgba(217,102,0,0.18)"></textarea>
-      </label>
       <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}">
       <p style="margin:24px 0 0; padding:10px 14px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:8px;">{{ error }}</p>
       </sc-if>
@@ -459,10 +464,10 @@ class Component extends DCLogic {
           name: name,
           business: fd.get('business'),
           teamSize: fd.get('teamSize'),
+          revenue: fd.get('revenue'),
           email: fd.get('email'),
           phone: phone,
           timeGoes: fd.getAll('timeGoes'), // multi-select checkboxes -> array
-          message: fd.get('message'),
           submittedAt: new Date().toISOString(),
         };
         this.setState({ submitting: true, submitError: false, error: '' });
