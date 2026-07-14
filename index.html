@@ -354,6 +354,9 @@
       <label style="display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:600; color:var(--charcoal-800); margin-top:18px;">What's the biggest thing eating your time right now?
         <textarea name="message" rows="4" required placeholder="Tell us where the day gets stuck." style="padding:12px 14px; font-family:var(--font-body); font-size:15px; line-height:1.55; color:var(--charcoal-900); background:#fff; border:1.5px solid var(--cream-600); border-radius:8px; outline:none; resize:vertical; box-sizing:border-box;" style-focus="border-color:var(--orange-500); outline:3px solid rgba(217,102,0,0.18)"></textarea>
       </label>
+      <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:24px 0 0; padding:10px 14px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:8px;">{{ error }}</p>
+      </sc-if>
       <div style="margin-top:24px;">
         <x-import component-from-global-scope="IntelagentDesignSystem_a247ec.Button" size="lg" type="submit" full-width="{{ true }}" hint-size="100%,48px">Start the conversation</x-import>
       </div>
@@ -418,30 +421,51 @@ class Component extends DCLogic {
   // To point at a different N8N workflow, change this one URL (use the PRODUCTION webhook URL).
   LEAD_WEBHOOK_URL = 'https://intelagent.app.n8n.cloud/webhook/a5dc1da7-e3b2-4d8c-9fe5-8177f28efa1e';
 
-  state = { submitted: false, submitError: false, submitting: false };
+  state = { submitted: false, submitError: false, submitting: false, error: '' };
 
   renderVals() {
     return {
       submitted: this.state.submitted,
       notSubmitted: !this.state.submitted,
       submitError: this.state.submitError,
+      error: this.state.error,
       showTestimonials: this.props.showTestimonials ?? true,
       goContact: () => { window.location.hash = '#contact'; },
       onSubmit: async (e) => {
         e.preventDefault();
         const form = e.currentTarget;
         const fd = new FormData(form);
+
+        // --- Client-side validation (runs before any fetch) ---
+        const name = (fd.get('name') || '').trim();
+        if (!/^[A-Za-z\s'-]+$/.test(name)) {
+          this.setState({ error: 'Please enter a valid name using only letters, spaces, hyphens, and apostrophes.', submitError: false });
+          return;
+        }
+
+        // Phone is optional: skip entirely when blank, otherwise require exactly 10 digits.
+        const phoneRaw = (fd.get('phone') || '').trim();
+        let phone = '';
+        if (phoneRaw) {
+          const digits = phoneRaw.replace(/\D/g, '');
+          if (digits.length !== 10) {
+            this.setState({ error: 'Please enter a valid 10-digit phone number, or leave the field blank.', submitError: false });
+            return;
+          }
+          phone = '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6);
+        }
+
         const payload = {
-          name: fd.get('name'),
+          name: name,
           business: fd.get('business'),
           teamSize: fd.get('teamSize'),
           email: fd.get('email'),
-          phone: fd.get('phone'),
+          phone: phone,
           timeGoes: fd.getAll('timeGoes'), // multi-select checkboxes -> array
           message: fd.get('message'),
           submittedAt: new Date().toISOString(),
         };
-        this.setState({ submitting: true, submitError: false });
+        this.setState({ submitting: true, submitError: false, error: '' });
         try {
           const res = await fetch(this.LEAD_WEBHOOK_URL, {
             method: 'POST',
